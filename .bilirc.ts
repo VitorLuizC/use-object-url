@@ -5,9 +5,9 @@ const configuration: Configuration = {
   input: 'src/index.ts',
   output: {
     format: ['es', 'cjs', 'umd', 'umd-min'],
-    moduleName: 'useObjectURL',
-    sourceMap: true
+    moduleName: 'useObjectURL'
   },
+  externals: ['react'],
   babel: {
     minimal: true
   },

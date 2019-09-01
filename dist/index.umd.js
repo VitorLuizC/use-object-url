@@ -1,34 +1,40 @@
 /*!
  * use-object-url v0.0.0
- * (c) Vitor Luiz Cavalcanti
+ * (c) Vitor Luiz Cavalcanti <vitorluizc@outlook.com> (https://vitorluizc.github.io)
  * Released under the MIT License.
  */
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
-  typeof define === 'function' && define.amd ? define(['exports'], factory) :
-  (global = global || self, factory(global.useObjectURL = {}));
-}(this, function (exports) { 'use strict';
+  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('react')) :
+  typeof define === 'function' && define.amd ? define(['react'], factory) :
+  (global = global || self, global.useObjectURL = factory(global.react));
+}(this, function (react) { 'use strict';
 
   /**
-   * Check if value is parseable to number.
-   * @example ```ts
-   * isNumberParseable('AAAA');
-   * //=> false
-   *
-   * isNumberParseable('100');
-   * //=> true
-   *
-   * if (!isNumberParseable(value))
-   *   throw new Error('Value can\'t be parseable to `Number`.')
-   * return Number(value);
-   * ```
-   * @param value - An `unknown` value to be checked.
+   * React Hook that receives an instance of `File`, `Blob` or `MediaSource` and
+   * creates an URL representing it. It releases URL when component unmount or
+   * parameter changes.
+   * @param object - `null` or an instance of `File`, `Blob` or `MediaSource`.
    */
-  var isNumberParseable = function (value) { return !Number.isNaN(Number(value)); };
 
-  exports.isNumberParseable = isNumberParseable;
+  var useObjectURL = function (object) {
+    var ref = react.useState(null);
+    var objectURL = ref[0];
+    var setObjectURL = ref[1];
+    react.useEffect(function () {
+      if (!object) {
+        return;
+      }
 
-  Object.defineProperty(exports, '__esModule', { value: true });
+      var objectURL = URL.createObjectURL(object);
+      setObjectURL(objectURL);
+      return function () {
+        URL.revokeObjectURL(objectURL);
+        setObjectURL(null);
+      };
+    }, [object]);
+    return objectURL;
+  };
+
+  return useObjectURL;
 
 }));
-//# sourceMappingURL=index.umd.js.map

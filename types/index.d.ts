@@ -1,22 +1,8 @@
 /**
- * A Branded Type for values parseable to number.
+ * React Hook that receives an instance of `File`, `Blob` or `MediaSource` and
+ * creates an URL representing it. It releases URL when component unmount or
+ * parameter changes.
+ * @param object - `null` or an instance of `File`, `Blob` or `MediaSource`.
  */
-export declare type NumberParseable = (number | string | boolean) & {
-    readonly isNumberParseble: unique symbol;
-};
-/**
- * Check if value is parseable to number.
- * @example ```ts
- * isNumberParseable('AAAA');
- * //=> false
- *
- * isNumberParseable('100');
- * //=> true
- *
- * if (!isNumberParseable(value))
- *   throw new Error('Value can\'t be parseable to `Number`.')
- * return Number(value);
- * ```
- * @param value - An `unknown` value to be checked.
- */
-export declare const isNumberParseable: (value: unknown) => value is NumberParseable;
+declare const useObjectURL: (object: File | Blob | MediaSource | null) => string | null;
+export default useObjectURL;

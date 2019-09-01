@@ -1,28 +1,36 @@
 /*!
  * use-object-url v0.0.0
- * (c) Vitor Luiz Cavalcanti
+ * (c) Vitor Luiz Cavalcanti <vitorluizc@outlook.com> (https://vitorluizc.github.io)
  * Released under the MIT License.
  */
 'use strict';
 
-Object.defineProperty(exports, '__esModule', { value: true });
+var react = require('react');
 
 /**
- * Check if value is parseable to number.
- * @example ```ts
- * isNumberParseable('AAAA');
- * //=> false
- *
- * isNumberParseable('100');
- * //=> true
- *
- * if (!isNumberParseable(value))
- *   throw new Error('Value can\'t be parseable to `Number`.')
- * return Number(value);
- * ```
- * @param value - An `unknown` value to be checked.
+ * React Hook that receives an instance of `File`, `Blob` or `MediaSource` and
+ * creates an URL representing it. It releases URL when component unmount or
+ * parameter changes.
+ * @param object - `null` or an instance of `File`, `Blob` or `MediaSource`.
  */
-var isNumberParseable = function (value) { return !Number.isNaN(Number(value)); };
 
-exports.isNumberParseable = isNumberParseable;
-//# sourceMappingURL=index.js.map
+var useObjectURL = function (object) {
+  var ref = react.useState(null);
+  var objectURL = ref[0];
+  var setObjectURL = ref[1];
+  react.useEffect(function () {
+    if (!object) {
+      return;
+    }
+
+    var objectURL = URL.createObjectURL(object);
+    setObjectURL(objectURL);
+    return function () {
+      URL.revokeObjectURL(objectURL);
+      setObjectURL(null);
+    };
+  }, [object]);
+  return objectURL;
+};
+
+module.exports = useObjectURL;

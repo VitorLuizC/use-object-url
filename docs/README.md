@@ -4,38 +4,26 @@
 
 ## Index
 
-### Type aliases
-
-* [NumberParseable](README.md#numberparseable)
-
 ### Functions
 
-* [isNumberParseable](README.md#const-isnumberparseable)
-
-## Type aliases
-
-###  NumberParseable
-
-Ƭ **NumberParseable**: *string | number | false | true & object*
-
-*Defined in [index.ts:4](https://github.com/VitorLuizC/typescript-library-boilerplate/blob/696db7f/src/index.ts#L4)*
-
-A Branded Type for values parseable to number.
+* [useObjectURL](README.md#const-useobjecturl)
 
 ## Functions
 
-### `Const` isNumberParseable
+### `Const` useObjectURL
 
-▸ **isNumberParseable**(`value`: unknown): *boolean*
+▸ **useObjectURL**(`object`: null | File | Blob | MediaSource): *null | string*
 
-*Defined in [index.ts:23](https://github.com/VitorLuizC/typescript-library-boilerplate/blob/696db7f/src/index.ts#L23)*
+*Defined in [index.ts:9](https://github.com/VitorLuizC/use-object-url/blob/ab1d700/src/index.ts#L9)*
 
-Check if value is parseable to number.
+React Hook that receives an instance of `File`, `Blob` or `MediaSource` and
+creates an URL representing it. It releases URL when component unmount or
+parameter changes.
 
 **Parameters:**
 
-Name | Type |
------- | ------ |
-`value` | unknown |
+Name | Type | Description |
+------ | ------ | ------ |
+`object` | null \| File \| Blob \| MediaSource | `null` or an instance of `File`, `Blob` or `MediaSource`.  |
 
-**Returns:** *boolean*
+**Returns:** *null | string*
