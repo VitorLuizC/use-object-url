@@ -1,7 +1,7 @@
 {
   "name": "use-object-url",
-  "version": "0.0.0",
-  "description": "",
+  "version": "1.0.0",
+  "description": "React Hook to create and revoke URL for any instance of `File`, `Blob` or `MediaSource`.",
   "cdn": "dist/index.umd.js",
   "main": "dist/index.js",
   "types": "types/index.d.ts",
@@ -40,9 +40,8 @@
     "url": "git+https://github.com/VitorLuizC/use-object-url.git"
   },
   "keywords": [
-    "typescript",
-    "boilerplate",
-    "library"
+    "react-hook",
+    "react"
   ],
   "author": {
     "url": "https://vitorluizc.github.io/",

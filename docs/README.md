@@ -14,7 +14,7 @@
 
 ▸ **useObjectURL**(`object`: null | File | Blob | MediaSource): *null | string*
 
-*Defined in [index.ts:9](https://github.com/VitorLuizC/use-object-url/blob/ab1d700/src/index.ts#L9)*
+*Defined in [index.ts:9](https://github.com/VitorLuizC/use-object-url/blob/59debc4/src/index.ts#L9)*
 
 React Hook that receives an instance of `File`, `Blob` or `MediaSource` and
 creates an URL representing it. It releases URL when component unmount or
