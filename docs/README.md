@@ -1,4 +1,4 @@
-**[[libraryNameWithSpacesAndUpperCases]](README.md)**
+**[useObjectURL](README.md)**
 
 [Globals](README.md)
 
