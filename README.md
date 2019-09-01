@@ -5,6 +5,22 @@
 [![Library minified size](https://badgen.net/bundlephobia/min/use-object-url)](https://bundlephobia.com/result?p=use-object-url)
 [![Library minified + gzipped size](https://badgen.net/bundlephobia/minzip/use-object-url)](https://bundlephobia.com/result?p=use-object-url)
 
+React Hook that receives an instance of `File`, `Blob` or `MediaSource` and creates an URL representing it. It releases URL when component unmount or parameter changes.
+
+```js
+import useObjectURL from 'use-object-url';
+
+const DownloadFileLink = ({ file, filename }) => {
+  const fileURL = useObjectURL(file);
+
+  return (
+    <a href={fileURL} target="_blank" download={filename}>
+      Download
+    </a>
+  );
+};
+```
+
 ## Installation
 
 This library is published in the NPM registry and can be installed using any compatible package manager.
@@ -28,8 +44,16 @@ This module has an UMD bundle available through JSDelivr and Unpkg CDNs.
 <script src="https://cdn.jsdelivr.net/npm/use-object-url"></script>
 
 <script>
-  // UMD module is exposed through the "useObjectURL" global variable.
-  console.log(useObjectURL);
+  function PreviewImage(props) {
+    // UMD module is exposed through the "useObjectURL" function.
+    var imageURL = useObjectURL(props.uploadedImage);
+
+    return React.createElement('img', {
+      src: imageURL,
+      alt: 'Uploaded image',
+      title: 'Preview of uploaded image.'
+    });
+  }
 </script>
 ```
 
