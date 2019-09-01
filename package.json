@@ -12,14 +12,19 @@
   "dependencies": {},
   "devDependencies": {
     "@types/jest": "^24.0.18",
+    "@types/react": "^16.9.2",
     "bili": "^4.8.1",
     "jest": "^24.9.0",
     "prettier": "^1.18.2",
+    "react": "^16.9.0",
     "rollup-plugin-typescript2": "^0.24.0",
     "ts-jest": "^24.0.2",
     "typedoc": "^0.15.0",
     "typedoc-plugin-markdown": "^2.1.7",
     "typescript": "^3.6.2"
+  },
+  "peerDependencies": {
+    "react": ">= 16.8.0"
   },
   "scripts": {
     "doc": "typedoc src/index.ts",
