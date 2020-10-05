@@ -14,11 +14,16 @@ window.URL = Object.assign(jest.fn(), {
 
 describe('useObjectURL | unit', () => {
   describe('when called', () => {
-    it('returns the state', () => {
+    it('returns the object containing the state', () => {
+      const setObject = expect.any(Function);
       const fileURL = 'https://url.com/report.pdf';
       (useState as jest.Mock).mockReturnValueOnce([fileURL]);
 
-      expect(useObjectURL(null)).toBe(fileURL);
+      expect(useObjectURL(null)).toMatchObject({
+        objectURL: fileURL,
+        object: null,
+        setObject
+      });
     });
   });
 
