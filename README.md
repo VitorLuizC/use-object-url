@@ -11,10 +11,10 @@ React Hook that receives an instance of `File`, `Blob` or `MediaSource` and crea
 import useObjectURL from 'use-object-url';
 
 const DownloadFileLink = ({ file, filename }) => {
-  const fileURL = useObjectURL(file);
+  const { objectURL } = useObjectURL(file);
 
   return (
-    <a href={fileURL} target="_blank" download={filename}>
+    <a href={objectURL} target="_blank" download={filename}>
       Download
     </a>
   );
@@ -46,10 +46,10 @@ This module has an UMD bundle available through JSDelivr and Unpkg CDNs.
 <script>
   function PreviewImage(props) {
     // UMD module is exposed through the "useObjectURL" function.
-    var imageURL = useObjectURL(props.uploadedImage);
+    var { objectURL } = useObjectURL(props.uploadedImage);
 
     return React.createElement('img', {
-      src: imageURL,
+      src: objectURL,
       alt: 'Uploaded image',
       title: 'Preview of uploaded image.'
     });
